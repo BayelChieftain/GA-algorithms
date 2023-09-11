@@ -25,12 +25,12 @@ class Job:
                 vacancy['min_expp'] = new_exp
 
     def show_vacancies(self):
-        print(f"Вакансии по профессии '{self.profession}':")
+        print(f"{self.profession}")
         if not self.vacancies:
             print("Пока нет вакансий на данную профессию")
         else:
             for vacancy in self.vacancies:
-                print(f"{vacancy['company']}: зарплата {vacancy['salary']} тыс, требуемый опыт {vacancy['min_exp']}")
+                print(f"\"{vacancy['company']}\": зарплата {vacancy['salary']} тыс, требуемый опыт {vacancy['min_exp']}")
 
     def find_best_vacancy(self, exp, profession, min_salary):
         if profession != self.profession:
@@ -50,3 +50,8 @@ class Job:
             self.close_vacancy(best_vacancy['company'])
         else:
             print("Простите, для вас не нашлось вакансий.")
+
+loyer = Job('loyer')
+loyer.show_vacancies()
+loyer.post_vacancy('Хорошие юристы', 300, 15)
+loyer.show_vacancies()
